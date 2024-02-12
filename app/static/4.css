@@ -1,0 +1,139 @@
+/* Header Styles */
+
+.store-name img {
+    border-radius: 50%;
+    box-shadow: 0 0 18px rgb(0, 0, 0);
+
+}
+
+
+
+.R111 {
+    text-align: center;
+    margin-left: 120px;
+    margin-top: -250px;
+    font-weight: bold;
+    letter-spacing: 8px;
+    position: relative;
+    overflow: hidden;
+
+}
+
+.R111 h2 {
+    text-align: center;
+    font-size: 50px;
+    font-weight: bold;
+    letter-spacing: 8px;
+    position: relative;
+    overflow: hidden;
+}
+
+.R111::before,
+.R111 h2::before {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: #ff1515; /* Цвет тени */
+    background: #000; /* Цвет фона тени */
+    transform: perspective(100px) rotateX(20deg);
+    transform-origin: center bottom;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+    z-index: -1;
+}
+
+@keyframes flicker {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0.8;
+    }
+}
+
+@keyframes changeColor {
+    0%, 100% {
+        color: #ff1515;
+    }
+    25%, 75% {
+        color: #ff1515;
+    }
+    50% {
+        color: #ff1515;
+    }
+}
+
+
+
+
+
+/* Tabs Styles */
+
+.HHH {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
+animation: moveUpDown 2s infinite;
+}
+@keyframes moveUpDown {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.oval-button {
+    background-color: #dc0909; /* Основной цвет кнопок */
+    color: white;
+
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 25px; /* Делаем кнопки овальными */
+    cursor: pointer;
+    transition: background-color 0.3s; /* Анимация смены цвета при наведении */
+}
+
+.with-image {
+    display: flex;
+    align-items: center;
+}
+
+.oval-button:hover {
+    background-color: #1c1ce3; /* Новый цвет при наведении */
+}
+
+
+
+.P1{
+    border-radius: 18px;
+    padding: 10px;
+    background-color: rgba(236, 240, 241, 0.7);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    display: flex;
+    margin: 2cm;
+    overflow: hidden; /* Чтобы текст внутри header не выходил за границы */
+     font-weight: bold;
+
+}
+
+.marquee-text {
+    white-space: nowrap; /* Предотвращаем перенос текста на новую строку */
+    animation: marquee 15s linear infinite;
+    font-weight: bold;
+
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}

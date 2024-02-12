@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Отзывы о тортах</title>
+    <link rel="stylesheet" href="{% static 'OTZ.css' %}">
+
+</head>
+<header >
+<div class="marquee-text">&#127873;Скидки для именинников!&#127873; Посетите наш магазин и получите специальные предложения!&#127873; Наш режим работы ПН-СБ 09:00-18:00! Голосовая почта: +7 (000) 000-00-00!</div>
+    </header>
+
+
+
+
+
+<div class="AA">
+        <a  href="{% url 'home' %}">
+    <button>Вернуться на главную</button>
+</a>
+
+        <a href="{% url 'toKorz' %}">
+        <button>Корзина</button>
+    </a>
+
+
+
+        <a href="{% url 'cakes' %}">
+        <button class="oval-button">Торты для девочек</button>
+    </a>
+    <a href="{% url 'cakes2' %}">
+        <button class="oval-button">Торты для мальчиков</button>
+    </a>
+
+    <a href="{% url 'cakes3' %}">
+        <button class="oval-button">Торты для женщин</button>
+    </a>
+    <a href="{% url 'cakes4' %}">
+        <button class="oval-button">Торты для мужчин</button>
+    </a>
+    <a href="{% url 'cakes5' %}">
+        <button class="oval-button">Торты тематические</button>
+    </a>
+    <a href="{% url 'cakes6' %}">
+        <button class="oval-button">Торты свадебные</button>
+        </a>
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+</div>
+
+<br>
+<body>
+
+    <form id="reviewForm">
+        <label for="name">Ваше имя:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="message">Ваш отзыв:</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+
+        <label for="photo">Выберите фото:</label>
+        <input type="file" id="photo" name="photo" accept="image/*">
+
+<label >Ваша оценка:</label>
+        <div class="rating">
+            <span class="star" onclick="rate(1)">★</span>
+            <span class="star" onclick="rate(2)">★</span>
+            <span class="star" onclick="rate(3)">★</span>
+            <span class="star" onclick="rate(4)">★</span>
+            <span class="star" onclick="rate(5)">★</span>
+        </div>
+        <br>
+
+        <button type="button" onclick="submitReview()">Отправить отзыв</button>
+    </form>
+
+    <div id="reviews"></div>
+
+    <script>
+        window.onload = function () {
+    loadReviews();
+};
+
+let selectedRating = 0;
+
+function rate(rating) {
+    selectedRating = rating;
+    highlightStars();
+}
+
+function highlightStars() {
+    const stars = document.querySelectorAll('.star');
+    stars.forEach((star, index) => {
+        star.classList.toggle('selected-star', index < selectedRating);
+    });
+}
+
+function submitReview() {
+    const name = document.getElementById('name').value;
+    const message = document.getElementById('message').value;
+    const photoInput = document.getElementById('photo');
+
+    if (name && message && selectedRating > 0) {
+        const reviewContainer = document.getElementById('reviews');
+        const reviewElement = document.createElement('div');
+        reviewElement.className = 'review';
+        reviewElement.innerHTML = `<h3>${name}</h3> <p>${message}</p>`;
+
+        // Добавление фото, если выбрано
+        if (photoInput.files.length > 0) {
+            const photo = document.createElement('img');
+            const reader = new FileReader();
+
+            reader.onload = function (e) {
+                photo.src = e.target.result;
+            };
+
+            reader.readAsDataURL(photoInput.files[0]);
+
+            photo.alt = 'Отзывное фото';
+            reviewElement.appendChild(photo);
+        }
+
+        // Добавляем оценку
+        if (selectedRating > 0) {
+            const ratingElement = document.createElement('div');
+            ratingElement.className = 'rating';
+            for (let i = 0; i < selectedRating; i++) {
+                const star = document.createElement('span');
+                star.className = 'star';
+                star.innerHTML = '★';
+                ratingElement.appendChild(star);
+            }
+            reviewElement.appendChild(ratingElement);
+        }
+
+        reviewContainer.appendChild(reviewElement);
+
+        // Сохранение отзыва в localStorage
+        saveReview(name, message, selectedRating, photoInput.files[0]);
+
+        // Очистка формы после отправки отзыва
+        document.getElementById('name').value = '';
+        document.getElementById('message').value = '';
+        document.getElementById('photo').value = '';
+
+        // Сброс выбранной оценки и выделение звезд
+        selectedRating = 0;
+        highlightStars();
+    } else {
+        alert('Пожалуйста, заполните все поля формы и выберите оценку.');
+    }
+}
+
+function saveReview(name, message, rating, photo) {
+    let reviews = JSON.parse(localStorage.getItem('reviews')) || [];
+
+    // Преобразуем изображение в base64
+    const reader = new FileReader();
+    reader.onload = function (e) {
+        const base64Image = e.target.result;
+        reviews.push({ name, message, rating, photo: base64Image });
+        localStorage.setItem('reviews', JSON.stringify(reviews));
+    };
+    reader.readAsDataURL(photo);
+}
+
+function loadReviews() {
+    const reviews = JSON.parse(localStorage.getItem('reviews')) || [];
+    const reviewContainer = document.getElementById('reviews');
+
+    reviews.forEach(review => {
+        const reviewElement = document.createElement('div');
+        reviewElement.className = 'review';
+        reviewElement.innerHTML = `<h3>${review.name}</h3> <p>${review.message}</p>`;
+
+        // Добавляем фото
+        if (review.photo) {
+            const photo = document.createElement('img');
+            photo.src = review.photo;
+            photo.alt = 'Отзывное фото';
+            reviewElement.appendChild(photo);
+        }
+
+        // Добавляем оценку
+        if (review.rating) {
+            const ratingElement = document.createElement('div');
+            ratingElement.className = 'rating';
+            for (let i = 0; i < review.rating; i++) {
+                const star = document.createElement('span');
+                star.className = 'star';
+                star.innerHTML = '★';
+                ratingElement.appendChild(star);
+            }
+            reviewElement.appendChild(ratingElement);
+        }
+
+        reviewContainer.appendChild(reviewElement);
+    });
+}
+
+    </script>
+
+</body>
+</html>

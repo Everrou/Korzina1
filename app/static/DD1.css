@@ -1,0 +1,330 @@
+/* ПЕРВОЕ*/
+
+body{
+
+    background-color: #56f8f8;
+   background-image: url("https://sun9-72.userapi.com/impf/EAlciCVhGvqJb7nI416lupqVm3gHJfKjA2wkPA/TXyf82uIqRI.jpg?size=1920x768&quality=95&crop=132,0,1325,529&sign=718d0a74ff89db7ad4a2f2957db00a8f&type=cover_group");
+
+}
+
+ .DD3 {
+            text-align: center;
+
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+
+@keyframes moveUpDown {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.AA {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    font-weight: bold;
+    position: relative;
+    animation: moveUpDown 2s infinite;
+}
+
+.AA a {
+    text-decoration: none;
+    margin-right: 50px;
+    font-weight: bold;
+}
+
+.HAHA1{
+
+}
+
+
+
+
+ header {
+
+    border-radius: 18px;
+    padding: 10px;
+    background-color: rgba(236, 240, 241, 0.7);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    display: flex;
+    margin: 2cm;
+    overflow: hidden; /* Чтобы текст внутри header не выходил за границы */
+     font-weight: bold;
+
+}
+
+.marquee-text {
+    white-space: nowrap; /* Предотвращаем перенос текста на новую строку */
+    animation: marquee 15s linear infinite;
+    font-weight: bold;
+
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+
+
+
+.DD1 {
+    text-align: center;
+    font-size: 5em;
+    color: transparent;
+    text-shadow: 8px 8px 10px rgb(2, 2, 2);
+    font-weight: bold;
+    letter-spacing: 8px;
+    position: relative;
+    animation: flicker 1s infinite alternate, changeColor 5s infinite;
+}
+
+.DD1::before,
+.DD1::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: transparent;
+}
+
+@keyframes flicker {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0.8;
+    }
+}
+
+@keyframes changeColor {
+    0% {
+        color: #0c0c07;
+    }
+    25% {
+        color: #020a3b;
+    }
+    50% {
+        color: #ec0909;
+    }
+    75% {
+        color: #ec77e0;
+    }
+    100% {
+        color: #da1d61;
+    }
+}
+
+h1.DD1::before,
+h1.DD1::after {
+    font-size: 72px;
+    text-shadow: 8px 8px 10px rgb(173, 221, 250);
+}
+
+
+
+
+
+
+
+
+
+
+button {
+    background-color: #dc0909; /* Основной цвет кнопок */
+    color: white;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    width: 100%; /* Растягиваем кнопки на всю ширину родительского контейнера */
+    box-sizing: border-box; /* Учитываем отступы и границы внутри ширины */
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #1c1ce3;
+}
+
+main {
+    background-color: #bde307;
+    padding: 20px;
+    border-radius: 18px;
+    border: 1px solid #2c3e50;
+    width: 90%;
+    margin-left: auto; /* Сдвигаем вправо, автоматически рассчитывая отступ слева */
+    margin-right: auto; /* Сдвигаем вправо, автоматически рассчитывая отступ справа */
+}
+
+
+
+.DD4 {
+    font-family: 'Arial', sans-serif;
+    color: #0c0c07;
+    background-color: rgba(224, 81, 241, 0.49);
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px; /* Отступ снизу */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center; /* Выравнивание текста по центру */
+}
+
+.DD4:before {
+     /* Текст "Торт для девочек" перед описанием */
+    display: block;
+    font-size: 24px;
+    margin-bottom: 10px; /* Отступ снизу от заголовка */
+}
+
+/* ПЕРВОЕ*/
+
+ /* ОПИСАНИЕ категория*/
+ .info-text {
+    font-family: 'Arial', sans-serif;
+     text-shadow: 8px 8px 10px rgb(31, 30, 30);
+    color: #0c0c07;
+    line-height: 1.5;
+    font-weight: bold;
+    transition: transform 0.3s, color 0.3s;
+    text-align: center; /* Выравнивание текста по центру */
+    cursor: pointer; /* Изменение курсора при наведении */
+
+
+}
+ .info-text:hover {
+    transform: scale(1.1); /* Увеличивает размер при наведении */
+    color: #110bb0; /* Изменяет цвет текста при наведении */
+}
+/* ОПИСАНИЕ категория  */
+
+
+
+ /* Стили для основного контента */
+
+main {
+            background-color: #f2fcf9;
+            padding: 20px;
+            display: flex;
+            flex-direction: row;
+        }
+
+
+
+
+        .content {
+            flex: 1;
+            margin-right: 20px;
+        }
+
+        .side-menu {
+            width: 200px;
+        }
+
+
+
+        /* Стили для вариантов начинок */
+        .faq-container1 {
+            margin-top: 20px;
+        }
+
+    .faq-item {
+        cursor: pointer;
+        background-color: #adddfa;
+        font-weight: bold;
+        padding: 10px;
+        margin-bottom: 5px;
+        border-radius: 5px;
+        color: #333; /* Цвет текста */
+    }
+
+    .faq-answer {
+        display: none;
+        font-weight: bold;
+        padding: 10px;
+        background-color: rgba(60, 246, 230, 0.37);
+        border-radius: 5px;
+        color: #0c0c07; /* Цвет текста */
+        margin-top: 5px; /* Отступ сверху */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .faq-answer.active {
+        display: block;
+    }
+
+        /* Стили для карточек тортов */
+        .TTT1 {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .card {
+            width: 200px;
+            margin: 20px;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .card img {
+            max-width: 100%;
+            border-radius: 5px;
+        }
+
+        h1.DD2 {
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .card p {
+            margin: 10px 0;
+            font-size: 16px;
+            color: #777;
+            font-weight: bold;
+        }
+
+        .card button {
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .card button:hover {
+            background-color: #2980b9;
+        }
+
+        .card .addToFavorites {
+            background-color: #e74c3c;
+            color: #fff;
+        }
+
+        .card .addToFavorites:hover {
+            background-color: #c0392b;
+        }
+
+        /* Добавленные стили для всплывающего окна */
+/* Добавленные стили для всплывающего окна */
+
+

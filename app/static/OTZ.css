@@ -1,0 +1,244 @@
+
+
+
+
+ body {
+    font-family: Arial, sans-serif;
+     background-image: url("https://sun9-72.userapi.com/impf/EAlciCVhGvqJb7nI416lupqVm3gHJfKjA2wkPA/TXyf82uIqRI.jpg?size=1920x768&quality=95&crop=132,0,1325,529&sign=718d0a74ff89db7ad4a2f2957db00a8f&type=cover_group");
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+
+}
+
+form {
+    max-width: 1500px;
+    border: 4px solid rgba(3, 3, 86, 0.4);
+    border-radius: 25px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #c0392b;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 18px;
+    cursor: pointer;
+    font-weight: bold;
+
+}
+
+button:hover {
+    background-color: #1c1ce3;
+}
+
+#reviews {
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.review {
+    background-color: #fff;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.rating {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.star {
+    cursor: pointer;
+    font-size: 40px;
+    margin-right: 5px;
+    color: gold;
+}
+
+.selected-star {
+    color: #0c0c07;
+}
+
+
+
+h1 {
+    width: 80%;
+    margin: auto;
+    padding: 10px;
+
+
+    border-radius: 18px;
+
+    text-align: center;
+    font-size: 56px;
+    color: transparent; /* Сделаем текст невидимым, так как будем использовать псевдоэлементы */
+
+    text-shadow: 8px 8px 10px rgb(7, 7, 14); /* Обводка текста */
+    font-weight: bold; /* Жирный стиль текста */
+    letter-spacing: 8px; /* Межбуквенное расстояние */
+    position: relative;
+    animation: flicker 1s infinite alternate, changeColor 5s infinite;
+}
+.h1::before,
+.h1::after {
+    content: attr(data-text); /* Отобразим текст снова */
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: transparent;
+}
+@keyframes flicker {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0.8;
+    }
+}
+@keyframes changeColor {
+    0% {
+        color: #ad0dbe;
+    }
+    25% {
+        color: #cef619;
+    }
+    50% {
+        color: #d02ac8;
+    }
+    75% {
+        color: #ec77e0;
+    }
+    100% {
+        color: #da1d61;
+    }
+}
+
+
+ header {
+     width: 80%;
+    margin: auto;
+    padding: 10px;
+
+
+    border-radius: 18px;
+
+    background-color: rgba(236, 240, 241, 0.7);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    display: flex;
+
+    overflow: hidden; /* Чтобы текст внутри header не выходил за границы */
+     font-weight: bold;
+
+}
+
+.marquee-text {
+    white-space: nowrap; /* Предотвращаем перенос текста на новую строку */
+    animation: marquee 15s linear infinite;
+    font-weight: bold;
+
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.AA {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    font-weight: bold;
+    position: relative;
+    animation: moveUpDown 2s infinite;
+
+}
+
+.AA a {
+    text-decoration: none;
+    margin-right: 20px;
+    font-weight: bold;
+}
+
+/* Добавим стили для контейнера отзывов */
+#reviews {
+    max-width: 1500px;
+    margin: 20px auto;
+}
+
+/* Стили для каждого отзыва */
+.review {
+    background-color: #fff;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Заголовок отзыва (имя пользователя и оценка) */
+.review h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+/* Стили для фотографии в отзыве */
+.review img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+/* Стили для текста отзыва */
+.review p {
+    margin-top: 10px;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* Добавим стили для звезд в отзыве */
+.review .rating {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.review .star {
+    font-size: 20px;
+    margin-right: 5px;
+}
+
+.review .selected-star {
+    color: gold;
+}
+
+

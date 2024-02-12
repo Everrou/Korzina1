@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Customer Reviews</title>
+</head>
+<body>
+    <h1>Customer Reviews</h1>
+    {% for review in reviews %}
+        <div>
+            <p><strong>{{ review.name }}</strong></p>
+            <p>{{ review.comment }}</p>
+            <!-- Другие поля, если необходимо -->
+       <a href="{% url 'customer_reviews' %}">Ссылка на отзывы</a>
+
+
+        </div>
+    {% endfor %}
+</body>
+</html>

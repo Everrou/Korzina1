@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Личный кабинет</title>
+    <link rel="stylesheet" href="{% static '3.css' %}">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        /* Добавьте стили для дополнительных элементов или настраивайте по своему усмотрению */
+
+    </style>
+</head>
+<body>
+    <header>
+        <!-- Ваши общие заголовки и вкладки -->
+        <h2>Название вашего сайта</h2>
+        <!-- Дополнительные элементы заголовка -->
+    </header>
+    <main>
+        <h1>Добро пожаловать в ваш личный кабинет!</h1>
+        <!-- Дополнительный контент для страницы личного кабинета -->
+        <!-- Например, информация о пользователе, список заказов, настройки и т. д. -->
+        <h2>
+  <a href="{% url 'registr' %}">Регистрация</a>
+    </h2>
+    </main>
+</body>
+</html>

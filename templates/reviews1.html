@@ -1,0 +1,49 @@
+<!-- reviews1.html -->
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Торты и отзывы</title>
+    <link rel="stylesheet" href="{% static '3.css' %}">
+</head>
+<body>
+    <header>
+        <!-- Ваши общие заголовки и вкладки -->
+    </header>
+    <main>
+        <h1>Добро пожаловать в раздел с тортами и отзывами!</h1>
+        {% for tovar in tovari %}
+            <div class="card">
+                <img src="{% static tovar.image %}" alt="">
+                <p>{{ tovar.opis }} </p>
+                <p>{{ tovar.price }} RUB</p>
+                <a href="{% url 'buy' tovar.id %}">
+                    <button>Купить</button>
+                </a>
+            </div>
+        {% endfor %}
+
+        <!-- Отзывы -->
+        <h2>Отзывы</h2>
+        <div class="reviews-container">
+            {% for review in reviews %}
+                <div class="review">
+                    <p><strong>{{ review.name }}:</strong> {{ review.comment }}</p>
+                    {% if review.photo_url %}
+                        <img src="{{ review.photo_url }}" alt="{{ review.name }}'s photo">
+                    {% endif %}
+                </div>
+            {% endfor %}
+
+            <!-- Форма для нового отзыва -->
+            <h3>Оставить отзыв</h3>
+            <form method="post" action="{% url 'add_review' %}">
+                {% csrf_token %}
+                {{ review_form.as_p }}
+                <button type="submit">Оставить отзыв</button>
+            </form>
+        </div>
+    </main>
+</body>
+</html>

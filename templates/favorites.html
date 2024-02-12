@@ -1,0 +1,42 @@
+{% extends 'index.html' %}
+{% block content %}
+  <h1>Добро пожаловать в раздел с товарами!</h1>
+  {% for one in tovari %}
+    <div class="card">
+      <img src="{% static one.image %}" alt="">
+      <p>{{ one.opis }} </p>
+      <p>{{ one.price }} RUB</p>
+      <button class="add-to-favorites" data-product-id="{{ one.id }}">Добавить в избранное</button>
+      <a href="{% url 'buy' one.id %}">
+        <button>Купить</button>
+      </a>
+    </div>
+  {% endfor %}
+
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('.add-to-favorites').click(function() {
+        var product_id = $(this).data('product-id');
+
+        $.ajax({
+          type: 'POST',
+          url: '{% url "add_to_favorites" %}',
+          data: {'product_id': product_id},
+          dataType: 'json',
+          success: function(response) {
+            if (response.success) {
+              alert('Товар добавлен в избранное!');
+            } else {
+              alert('Не удалось добавить товар в избранное.');
+            }
+          },
+          error: function() {
+            alert('Произошла ошибка при выполнении запроса.');
+          }
+        });
+      });
+    });
+  </script>
+
+{% endblock %}

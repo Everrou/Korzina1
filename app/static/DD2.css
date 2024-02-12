@@ -1,0 +1,198 @@
+.faq-container1 {
+
+    margin: 10px;
+
+    width: 800px;
+    max-width: 100%;
+    text-align: center; /* Выравнивание заголовка по центру */
+    overflow: hidden;
+    position: relative;
+}
+
+.faq-container1:before {
+
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background-color: #fff;
+    z-index: -1;
+ border-radius: 12px;/* Увеличил радиус скругления для контейнера */
+}
+
+.faq-item {
+    cursor: pointer;
+    font-weight: bold;
+    padding: 10px;
+    background-color: #ff66b2;
+    color: #fff;
+    border-radius: 15px; /* Увеличил радиус скругления кнопки для более мягкого вида */
+    margin-bottom: 10px;
+    transition: background-color 0.3s;
+}
+
+.faq-item:hover {
+    background-color: #da4584;
+}
+
+.faq-answer {
+display: none;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 15px; /* Увеличил радиус скругления ответа для более мягкого вида */
+    margin-top: 10px;
+    line-height: 1.6;
+}
+
+.faq-container.active .faq-answer {
+    display: block;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+background-color: #c0f3f3; /* Бледно-розовый фон */
+    color: #333; #a61d1d; /* Черный цвет текста */
+}
+
+header {
+background-color: rgba(192, 217, 224, 0.87); /* Розовый цвет для шапки */
+    padding: 10px;
+    text-align: center;
+}
+
+main {
+    margin: 20px;
+}
+
+
+
+h1.DD1 {
+    text-align: center;
+    font-size: 86px;
+    color: transparent; /* Сделаем текст невидимым, так как будем использовать псевдоэлементы */
+    margin-top: 20px;
+    text-shadow: 8px 8px 10px rgb(31, 31, 231); /* Обводка текста */
+    font-weight: bold; /* Жирный стиль текста */
+    letter-spacing: 8px; /* Межбуквенное расстояние */
+    position: relative;
+    animation: flicker 1s infinite alternate, changeColor 5s infinite;
+}
+
+.h1.DD1::before,
+.h1.DD1::after {
+    content: attr(data-text); /* Отобразим текст снова */
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: transparent;
+}
+
+@keyframes flicker {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0.8;
+    }
+}
+
+@keyframes changeColor {
+    0% {
+        color: #ad0dbe;
+    }
+    25% {
+        color: #cef619;
+    }
+    50% {
+        color: #d02ac8;
+    }
+    75% {
+        color: #ec77e0;
+    }
+    100% {
+        color: #da1d61;
+    }
+}
+
+h2.DD3 {
+    color: #0c0c07; /* Розово-фиолетовый цвет для подзаголовка */
+    text-align: center;
+    margin-bottom: 20px; /* Увеличиваем отступ снизу */
+    font-size: 18px; /* Уменьшаем размер шрифта */
+}
+
+.info-text {
+    text-align: left;
+    line-height: 1.6;
+    margin: 10px 0;
+}
+
+.info-text b {
+    color: #0c0c07; /* Розово-фиолетовый цвет для выделения жирным */
+}
+
+
+
+
+
+
+
+
+
+
+button {
+    background-color: #ff66b2;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.addToFavorites:hover,
+button:hover {
+    background-color: #ff3385;
+}
+
+.card {
+    background-color: #fff; /* White background for each product card */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle box shadow */
+    margin: 15px;
+    padding: 20px;
+    text-align: center;
+    max-width: 300px;
+}
+.card img {
+    max-width: 100%;
+    height: 250px;
+}
+.product-description {
+    font-weight: bold;
+    margin-top: 10px;
+}
+.product-price {
+
+    margin-top: 10px;
+}
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+h2.DD4 {
+    text-align: center;
+    font-size: 60px;
+    color: #ff3385;
+    margin-top: 20px;
+
+    font-weight: bold; /* Жирный стиль текста */
+    letter-spacing: 8px; /* Межбуквенное расстояние */
+
+}
+

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ cake.opis }}</title>
+    <link rel="stylesheet" href="{% static '3.css' %}">
+    <link rel="stylesheet" href="{% static 'DD1.css' %}">
+</head>
+<body>
+    <main>
+        <h1 class="DD1">{{ cake.opis }}</h1>
+        <div class="card" data-product-id="{{ cake.id }}">
+            <img src="{% static cake.image %}" alt="">
+            <h2>{{ cake.opis }}</h2>
+            <p>{{ cake.price }} RUB</p>
+            <!-- Добавьте здесь дополнительную информацию о торте -->
+        </div>
+    </main>
+</body>
+</html>

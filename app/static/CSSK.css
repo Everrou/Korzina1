@@ -1,0 +1,76 @@
+.youtube1 {
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 18px;
+  width: 10%;
+  padding: 10px;
+  background-color: #dc0909;
+
+  transition: background-color 0.3s ease;
+  border-radius: 25px; /* Делаем кнопки овальными */
+}
+
+.youtube1:hover {
+  background-color: #1c1ce3;
+}
+
+.youtube1 img {
+  width: 3px; /* Размер вашего значка */
+  height: 3px; /* Размер вашего значка */
+  margin-right: 10px; /* Расстояние между значком и текстом */
+}
+
+.youtube1 span {
+  display: inline-block;
+  font-weight: bold;
+}
+
+.youtube1:hover span {
+  text-decoration: underline;
+}
+
+.red-link {
+  background-color: #dc0909;
+
+  padding: 10px;
+  color: white;
+  font-weight: bold;
+  margin-left: -40px; /* Измените значение на необходимое */
+  border-radius: 25px; /* Делаем кнопки овальными */
+}
+
+
+.red-link:hover {
+  background-color: #1c1ce3;
+}
+
+.PUPS2 {
+  font-weight: bold;
+  font-style: italic; /* Наклонный стиль */
+ /* Подчеркивание текста */
+  color: #0c0c07; /* Красный цвет текста */
+}
+
+.PUPS3 {
+  font-weight: bold;
+  font-style: italic; /* Наклонный стиль */
+   /* Подчеркивание текста */
+  color: #0c0c07; /* Красный цвет текста */
+}
+
+.PUPS4 {
+  font-weight: bold;
+  font-style: italic; /* Наклонный стиль */
+   /* Подчеркивание текста */
+  color: #0c0c07; /* Красный цвет текста */
+}
+.PUPS5 {
+  font-weight: bold;
+  font-style: italic; /* Наклонный стиль */
+   /* Подчеркивание текста */
+  color: #0c0c07; /* Красный цвет текста */
+}
+

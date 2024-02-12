@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Заказ торта по фото</title>
+    <script src="{% static 'DIZ.js' %}" defer></script>
+    <link rel="stylesheet" href="{% static 'DIZ.css' %}">
+</head>
+<body>
+    <h1>Заказ торта по фото</h1>
+    <p>Дизайнерский торт</p>
+    <p>Для заказа данного торта, пожалуйста, заполните форму заявки:</p>
+
+    <form action="/submit/" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="contactPerson">Контактное лицо:</label>
+        <input type="text" id="contactPerson" name="contactPerson" required>
+
+        <label for="phoneNumber">Номер телефона:</label>
+        <input type="tel" id="phoneNumber" name="phoneNumber" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="deliveryDate">Дата выполнения заказа:</label>
+        <input type="date" id="deliveryDate" name="deliveryDate" required>
+
+        <label for="city">Город:</label>
+        <input type="text" id="city" name="city" required>
+
+        <label for="sketch">Эскиз (при необходимости):</label>
+        <input type="file" id="sketch" name="sketch">
+
+        <label for="filling">Выбрать начинку:</label>
+        <select id="filling" name="filling">
+            <option value="Molochka">Молочная девочка</option>
+            <!-- Другие варианты начинок можно добавить здесь -->
+        </select>
+
+        <label for="weight">Количество килограмм:</label>
+        <input type="number" id="weight" name="weight" min="1" required>
+
+        <label for="note">Примечание:</label>
+        <textarea id="note" name="note"></textarea>
+
+        <button type="submit">Отправить заказ</button>
+    </form>
+
+    <script>
+        document.getElementById('city').addEventListener('change', function() {
+            // Ваш код для изменения города
+        });
+    </script>
+</body>
+</html>

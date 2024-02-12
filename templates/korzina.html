@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Корзина</title>
+    <link rel="stylesheet" href="{% static '12.css' %}">
+    <script src="{% static '1.js' %}" defer></script>
+</head>
+
+<body class="F111">
+
+<header >
+<div class="marquee-text">&#127873;Скидки для именинников!&#127873; Посетите наш магазин и получите специальные предложения!&#127873; Наш режим работы ПН-СБ 09:00-18:00! Голосовая почта: +7 (000) 000-00-00!</div>
+    </header>
+<br>
+        <br>
+<br>
+        <br>
+
+<main>
+
+        <h1>Корзина</h1>
+
+        <table class="cart-table">
+    <thead>
+        <tr>
+            <th>Название торта:</th>
+            <th>Количество:</th>
+            <th>Сумма:</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for one in items %}
+            <tr>
+                <td>{{ one.tovar.opis }}</td>
+                <td>{{ one.count }} ШТ</td>
+                <td>{{ one.summa }} RUB</td>
+                <td>
+                    <a href="{% url 'del' one.id %}">
+                        <button class="delete-button">Удалить</button>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+    <tfoot>
+        <tr>
+
+        </tr>
+    </tfoot>
+        </table>
+
+
+
+
+
+
+        <h2 class="total-amount">Итого {{ itog }} RUB</h2>
+        <a href="{% url 'home' %}">
+            <button class="return-button">Вернуться на главную</button>
+        </a>
+        <br>
+        <br>
+
+        <button id="fin" class="continue-button">Продолжить</button>
+
+        <br>
+        <br>
+        <div id="forma" hidden>
+            <form action="" class="order-form" onsubmit="sendToTelegram(event)">
+                <label for="adres">Напишите ваш адрес:</label>
+                <input type="text" id="adres" class="text-input" name="adres">
+                <br>
+                <br>
+                <label for="name">Имя:</label>
+                <input type="text" id="name" class="text-input" name="name">
+                <br>
+                <br>
+                <label for="tel">Телефон:</label>
+                <input type="text" id="tel" class="text-input" name="tel">
+                <br>
+                <br>
+
+
+                <td colspan="3">
+                    <label for="cakeFilling">Выберите начинку для торта:</label>
+                    <select id="cakeFilling" class="select-box" name="cakeFilling">
+                        <option value="Молочная девочка">1.Молочная девочка</option>
+                <option value="Черный лес">2.Черный лес</option>
+                <option value="Сникерс">3.Сникерс</option>
+                <option value="Черничный мусс">4.Черничный мусс</option>
+                <option value="Шоколадная с вареной сгущенкой">5.Шоколадная с вареной сгущенкой</option>
+                <option value="Сметанная">6.Сметанная</option>
+                <option value="Медовая">7.Медовая</option>
+                <option value="Три шоколада">8.Три шоколада</option>
+                <option value="Тирамису">9.Тирамису</option>
+                <option value="Прага">10.Прага</option>
+                <option value="Лесные ягоды">11.Лесные ягоды</option>
+                <option value="Радуга">12.Радуга</option>
+                <option value="Раффаэлло">13.Раффаэлло</option>
+                <option value="Красный бархат">14.Красный бархат</option>
+                    </select>
+                </td>
+                <br>
+                <br>
+                <input type="submit" value="Оформить заказ" class="submit-button">
+                <h2 id="confirmation-message" style="display: none;">Ваш запрос успешно отправлен! Вам позвонит наш Администратор</h2>
+            </form>
+        </div>
+
+        <script>
+    function sendToTelegram(event) {
+        event.preventDefault();
+
+        const botToken = '6921274787:AAGYV8h4UwjzwcNyhA6nXYCRyrCQnC2Z97g';
+        const chatId = '1332500391';
+
+        const formData = new FormData(event.target);
+        const city = formData.get('adres');
+        const name = formData.get('name');
+        const phone = formData.get('tel');
+        const cakeFilling = formData.get('cakeFilling');
+
+        let message = `Новый заказ!\nГород: ${city}\nИмя: ${name}\nТелефон: ${phone}\n\n`;
+
+        // Получение данных о товарах
+        const productRows = document.querySelectorAll('.cart-table tbody tr');
+
+        productRows.forEach((row, index) => {
+            const cells = row.cells;
+            if (cells.length >= 3) {
+                const productName = cells[0].innerText;
+                const productQuantity = cells[1].innerText;
+                const productTotal = cells[2].innerText;
+
+                message += `\nНачинка: ${cakeFilling}\nНазвание: ${productName}\nКоличество: ${productQuantity}\nСумма: ${productTotal}\n\n`;
+            }
+        });
+
+        fetch(`https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            document.getElementById('confirmation-message').style.display = 'block';
+        })
+        .catch(error => {
+            console.error(error);
+        });
+    }
+</script>
+
+
+
+
+
+    </main>
+
+</body>
+
+</html>
